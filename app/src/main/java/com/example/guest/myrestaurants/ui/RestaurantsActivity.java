@@ -1,8 +1,6 @@
 package com.example.guest.myrestaurants.ui;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,13 +10,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.guest.myrestaurants.R;
 import com.example.guest.myrestaurants.adapters.RestaurantListAdapter;
-import com.example.guest.myrestaurants.models.Restaurant;
 import com.example.guest.myrestaurants.services.YelpService;
-
-import okhttp3.Callback;
-
+import com.example.guest.myrestaurants.models.Restaurant;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,13 +20,13 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.Response;
 
 public class RestaurantsActivity extends AppCompatActivity {
     public static final String TAG = RestaurantsActivity.class.getSimpleName();
 
-    @Bind(R.id.recyclerView)
-    RecyclerView mRecyclerView;
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private RestaurantListAdapter mAdapter;
 
     public ArrayList<Restaurant> mRestaurants = new ArrayList<>();
@@ -65,7 +59,6 @@ public class RestaurantsActivity extends AppCompatActivity {
 
                 RestaurantsActivity.this.runOnUiThread(new Runnable() {
 
-                    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
                     @Override
                     public void run() {
                         mAdapter = new RestaurantListAdapter(getApplicationContext(), mRestaurants);
